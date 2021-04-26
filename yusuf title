@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+var obj1 = { user:"reaser", age:12, country:"mexico" };
+var obj2 = { user:"adeyemi", age:14, country:"nigeria" };
+var obj3 = { user;"ade", age:15, country:"ghana" };
+var obj4 = {u1:obj1 u2:obj2 u3:obj3};
+document.write(obj3.user+"is"+obj3.age+"yrs old and lives in"obj3.country);
+obj3.country ="america";
+document.write("<hr/  >");
+document.write(obj3.user+"is"+obj3.age+"yrs old and lives in"obj3.country);
+</script>
+</head>
+<body>
+</body>
+</html>

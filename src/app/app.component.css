@@ -1,0 +1,22 @@
+.loading{
+  display: flex;
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background-color: #eeeeee;
+  opacity:0.5;
+align-items:center;
+justify-content: center;
+}
+
+.rotate{
+  width:35px;
+  height:35px;
+  border-radius: 50%;
+  border:2px dotted blue;
+  border-top:3px dotted blue;
+
+  border-bottom: 1px dotted blue;
+}

@@ -1,0 +1,35 @@
+<div class="egbe" *ngFor="let data of levels1">
+<table >
+<tr>
+  <th>Edit</th>
+<th>Date</th>
+<th>Time of Transaction</th>
+<th>Type of transaction</th>
+<th>Amount collected from customer</th>
+<th>Amount Given to Customer</th>
+<th>Amount transfered to Customer</th>
+<th>Amount Deducted from customer's Bank</th>
+<th>Bank Charges</th>
+<th>Amount Remaining in Hand</th>
+<th>Amount Remaining in Bank</th>
+<th>Profit</th>
+</tr >
+
+
+<tr *ngFor="let dataa of data" >
+  <td><button (click)="edit(dataa[0].date, dataa[0].timestamp, dataa[0].type);">Edit</button></td>
+  <td> {{dataa[0].date}}</td>
+    <td> {{dataa[0].time}}</td>
+  <td>  {{dataa[0].type}}</td>
+  <td>  {{dataa[0].amountcollectedfromcustomer}}</td>
+  <td>{{dataa[0].amountgiventocustomer}}</td>
+  <td>  {{dataa[0].amounttransferedtocustomer}}</td>
+  <td>  {{dataa[0].amounttransferedtobank}}</td>
+  <td>  {{dataa[0].bankcharges}}</td>
+  <td>  {{dataa[0].amountremaininginhand}}</td>
+  <td>  {{dataa[0].amountremaininginbank}}</td>
+  <td>  {{dataa[0].profit}}</td>
+    <td><button (click)="edit(dataa[0].date, dataa[0].timestamp, dataa[0].type);">Edit</button></td>
+</tr>
+</table>
+</div>

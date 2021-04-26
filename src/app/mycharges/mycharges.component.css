@@ -1,0 +1,101 @@
+.display{
+  display: block;
+
+}
+.nodisplay{
+  display: none;
+}
+.inputdiv span{
+  color: red;
+}
+.inputlabel, .input{
+  margin-bottom: 15px;
+  display: block;
+
+}
+.inputlabel{
+
+  display: flex;
+  font-size: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.input{
+  padding: 8px;
+    font-size: 16px;
+    border-radius: 3PX;
+    width: 320px;
+    border: 1px solid #babfc3;
+}
+.input:focus{
+  outline:0;
+  border: 1px solid blue;
+}
+.inputdiv{
+  display:flex;
+  flex-direction: column;
+
+}
+.submitarea{
+display: flex;
+justify-content: flex-start;
+margin-left: 0px;
+margin-bottom: 10px;
+
+}
+.submitdiv input, .submitdiv button{
+  width: 100px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    box-shadow: -1px 2px 4px 1px rgb(183 193 204);
+    outline: 0;
+    border: none;
+    margin-left: 25px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.submitdiv button a:link, .submitdiv button a:visited{
+  color: white;
+  text-decoration: none;
+}
+.choose{
+  margin: 20px;
+}
+.choose div{
+  width: 200px;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    text-decoration: underline;
+    /* border-radius: 50%; */
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px 0px 0px 10px;
+
+}
+@media only screen and (min-width:1000px ){
+  .navwrapper{
+    width: inherit;
+  }
+  .inputlabel, .input{
+    float:left;
+    margin-right:20px;
+  }
+  .inputdiv{
+  margin-bottom: 20px;
+  clear:both;
+  flex-direction: row;
+  align-items: center;
+  }
+  .input{
+    width: 620px;
+  }
+  .submitarea{
+    margin-left: 150px;
+  }
+  .inputlabel{
+    width: 200px;
+    justify-content: flex-start;
+  }
+}

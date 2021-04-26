@@ -1,0 +1,66 @@
+
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#">
+              Login
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Admin
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="indexwrapper">
+
+
+
+        <div class="loginwrapper">
+          <div class="loginheader">
+            Login
+            </div>
+            <div class="loginbody">
+
+              <form novalidate [formGroup]="loginform" (ngSubmit)=login();>
+
+
+
+
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input type ="email" id="email" formControlName="email"
+                  [ngClass]="{'invalid': errormessage.email}"
+                  placeholder="email"
+                  >
+                  <span class="errormessage">{{errormessage.email}}</span>
+                </div>
+
+
+              <div class="input">
+                <label for="password">Password</label>
+                <input type ="password" id="password" formControlName="password"
+                [ngClass]="{'invalid': errormessage.password}"
+                placeholder="Password"
+                >
+                <span class="errormessage">{{errormessage.password}}</span>
+              </div>
+
+              <div  *ngIf="loginerror" >{{loginerror}}<span style="color:red"></span></div>
+
+              <div class="input">
+                <input type ="submit" id="submit" value="Login" id="submit">
+                 <span class="orregister">
+                    <a href="">
+                   or Register</a></span>
+              </div>
+              </form>
+
+
+              </div>
+
+
+          </div>
+      </div>

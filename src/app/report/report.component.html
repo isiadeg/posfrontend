@@ -1,0 +1,46 @@
+<div class="egbe" *ngFor="let data of vendo">
+{{data[0]}}
+<table>
+<tr>
+<th>Time of Transaction</th>
+<th>Type of transaction</th>
+<th>Amount collected from customer</th>
+<th>Amount Given to Customer</th>
+<th>Amount transfered to Customer</th>
+<th>Amount transfered to Bank</th>
+<th>Bank Charges</th>
+<th>Amount Remaining in Hand</th>
+<th>Amount Remaining in Bank</th>
+<th>Profit</th>
+<th>Time of Last Remitance</th>
+<th>Amount Owed (Bank)</th>
+<th>Amount Remited(Bank)</th>
+<th>Opening Balance(Bank)</th>
+<th>Profit(Bank)</th>
+<th>Amount Owed (Hand)</th>
+<th>Amount Remited(Hand)</th>
+<th>Opening Balance(Hand)</th>
+<th>Profit(Hand)</th>
+</tr >
+<tr *ngFor="let dataa of data[2]" >
+<td> {{dataa.datetime}}</td>
+<td>  {{dataa.type}}</td>
+<td>  {{dataa.amountcollectedfromcustomer}}</td>
+<td>{{dataa.amountgiventocustomer}}</td>
+<td>  {{dataa.amounttransferedtocustomer}}</td>
+<td>  {{dataa.amounttransferedtobank}}</td>
+<td>  {{dataa.bankcharges}}</td>
+<td>  {{dataa.amountremaininginhand}}</td>
+<td>  {{dataa.amountremaininginbank}}</td>
+<td>  {{dataa.profit}}</td>
+<td>  {{data[1].timedaily}}</td>
+<td>  {{data[1].amountowedinbank}}</td>
+<td>  {{data[1].amountremitedinbank}}</td>
+<td>  {{data[1].openingbalanceinbank}}</td>
+<td>  {{data[1].profitbank}}</td>
+<td>  {{data[1].amountowedinhand}}</td>
+<td>  {{data[1].amountremitedinhand}}</td>
+<td>  {{data[1].openingbalanceinhand}}</td>
+<td>  {{data[1].profithand}}</td>
+</tr>
+</table>

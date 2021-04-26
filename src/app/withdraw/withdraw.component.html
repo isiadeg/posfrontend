@@ -1,0 +1,56 @@
+<div>
+  WITHDRAW
+  </div>
+<div class="addassignmoney">
+  <form [formGroup]="remitform" novalidate (ngSubmit)="save();">
+
+
+    <div class="inputdiv">
+  <label for="remitwhere" class="inputlabel">Deposit or Withdrawal</label>
+<select id="remitwhere" class="input"
+formControlName ="type">
+<option value="withdraw">Withdraw</option>
+
+ </select>
+  </div>
+  <div class="inputdiv">
+<label for="remitwhere" class="inputlabel">Bank</label>
+<select id="remitwhere" class="input"
+formControlName ="bank">
+<option *ngFor="let data of banks" value="{{data}}">{{data}}</option>
+
+</select>
+</div>
+  <div class="inputdiv">
+<label for="remitmoney" class="inputlabel">Total Amount Given To Customer</label>
+<input type="number" id="remitmoney" class="input"
+formControlName ="give">
+</div>
+<div class="inputdiv">
+<label for="remitmoney" class="inputlabel">Amount Deducted From Customer's Bank</label>
+<input type="number" id="remitmoney" class="input"
+formControlName ="transfered">
+</div>
+<div class="submitarea">
+<div class="submitdiv">
+<input type="button" id="submitassignmoney" [disabled]="!remitform.valid" (click)="save();" value="Enter" class="inputbutton">
+</div>
+</div>
+</form>
+<div class="submitarea">
+<div class="submitdiv">
+<button id="cancel" value="Cancel"
+
+ class="inputbutton">
+<a [routerLink]="['/user', uid, 'transactions', uid]" routerLinkActive ="active">
+  Cancel</a>
+</button>
+</div>
+</div>
+
+
+</div>
+<div class="loading" *ngIf="loading">
+  <div class="rotate">
+    </div>
+  </div>

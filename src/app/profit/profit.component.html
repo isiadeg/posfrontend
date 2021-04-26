@@ -1,0 +1,15 @@
+
+<table  *ngIf ="dataarray" >
+  <tr>
+    <th>Date</th>
+    <th>Total Profit</th>
+
+  </tr>
+  <tr *ngFor ="let data of dataarray; index as i">
+  
+    <th>{{datearray[i]}}</th>
+    <th>{{data.profit}}</th>
+
+  </tr>
+
+</table>

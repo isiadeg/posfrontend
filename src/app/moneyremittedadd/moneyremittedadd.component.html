@@ -1,0 +1,40 @@
+<div class="addassignmoney">
+  <form [formGroup]="remitform" novalidate (ngSubmit)="save();">
+
+
+    <div class="inputdiv">
+  <label for="remitwhere" class="inputlabel">Where</label>
+<select id="remitwhere" class="input"
+formControlName ="where">
+<option value="bank">Bank</option>
+<option value="hand">Hand</option>
+ </select>
+  </div>
+  <div class="inputdiv">
+<label for="remitmoney" class="inputlabel">Amount </label>
+<input type="number" id="remitmoney" class="input"
+formControlName ="amount">
+</div>
+<div class="submitarea">
+<div class="submitdiv">
+<input type="button" id="submitassignmoney" (click)="save();" value="Remit" class="inputbutton">
+</div>
+</div>
+</form>
+<div class="submitarea">
+<div class="submitdiv">
+<button id="cancel" value="Cancel"
+
+ class="inputbutton">
+<a [routerLink]="['/admin', 'user', uid, uid, 'moneyremmited']" routerLinkActive ="active">
+  Cancel</a>
+</button>
+</div>
+</div>
+
+
+</div>
+<div class="loading" *ngIf="loading">
+  <div class="rotate">
+    </div>
+  </div>

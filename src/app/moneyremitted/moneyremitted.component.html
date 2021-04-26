@@ -1,0 +1,22 @@
+
+<table  *ngIf ="g" >
+  <tr>
+    <th>Edit</th>
+    <th>Date</th>
+    <th>Money Remited</th>
+    <th>Where</th>
+  </tr>
+  <tr *ngFor ="let data of g">
+    <th>
+<button class="editbutton" (click)="edit(data.money, data.time)">Edit</button>
+    </th>
+    <th>{{data.stringTime}}</th>
+    <th>{{data.money}}</th>
+    <th>{{data.where}}</th>
+  </tr>
+
+</table>
+<div class="plusbutton">
+  <a [routerLink] = "['/admin', 'user', uid, uid, 'moneyremmitedadd']"
+  routerLinkActive = "active"> + </a>
+</div>

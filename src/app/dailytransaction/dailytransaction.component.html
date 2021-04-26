@@ -1,0 +1,28 @@
+<div class="egbe" *ngFor="let data of levels1">
+<table >
+<tr>
+<th>Date</th>
+<th>Time of Last Remitance</th>
+<th>Amount Owed (Bank)</th>
+<th>Amount Remited(Bank)</th>
+<th>Opening Balance(Bank)</th>
+<th>Profit(Bank)</th>
+<th>Amount Owed (Hand)</th>
+<th>Amount Remited(Hand)</th>
+<th>Opening Balance(Hand)</th>
+<th>Profit(Hand)</th>
+</tr >
+<tr *ngFor="let dataa of data" >
+<td> {{dataa[0].date}}</td>
+<td>  {{dataa[0].time}}</td>
+<td>  {{dataa[0].amountowedinbank}}</td>
+<td>{{dataa[0].amountremitedinbank}}</td>
+<td>  {{dataa[0].openingbalanceinbank}}</td>
+<td>  {{dataa[0].profitbank}}</td>
+<td>  {{dataa[0].amountowedinhand}}</td>
+<td>  {{dataa[0].amountremitedinhand}}</td>
+<td>  {{dataa[0].openingbalanceinhand}}</td>
+<td>  {{dataa[0].profithand}}</td>
+</tr>
+</table>
+</div>

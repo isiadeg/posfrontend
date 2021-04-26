@@ -1,0 +1,159 @@
+
+      <div class="nav">
+        <ul>
+          <li>
+            <a [routerLink] = "['/login']" routerLinkActive ="active"  >
+              Login
+            </a>
+          </li>
+          <li>
+            <a [routerLink] = "['/admin']" routerLinkActive ="active">
+              Admin
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="indexwrapper">
+
+
+
+        <div class="loginwrapper">
+          <div class="loginheader">
+            Register
+            </div>
+            <div class="loginbody">
+              <form novalidate [formGroup]="registerform" >
+                <div class="input">
+                  <label for="firstname">First Name</label>
+                  <input type ="text" id="firstname" formControlName="firstName"
+                  [ngClass]="{'invalid': errormessage.firstname}"
+                  placeholder="First Name"
+                  >
+                  <span class="errormessage">{{errormessage.firstname}}</span>
+                </div>
+
+                <div class="input">
+                  <label for="lastname">Last Name</label>
+                  <input type ="text" id="lastname" formControlName="lastName"
+                  [ngClass]="{'invalid': errormessage.lastname}"
+                  placeholder="Last Name"
+                  >
+                  <span class="errormessage">{{errormessage.lastname}}</span>
+                </div>
+
+                <div class="input">
+                  <label for="middlename">Middle Name</label>
+                  <input type ="text" id="middlename" formControlName="middleName"
+                  [ngClass]="{'invalid': errormessage.middlename}"
+                  placeholder="Middle Name"
+                  >
+                  <span class="errormessage">{{errormessage.middlename}}</span>
+                </div>
+
+
+
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input type ="email" id="email" formControlName="email"
+                  [ngClass]="{'invalid': errormessage.email}"
+                  placeholder="email"
+                  >
+                  <span class="errormessage">{{errormessage.email}}</span>
+                </div>
+
+            <div class="passwordblock" formGroupName="passwordblock">
+              <div class="input">
+                <label for="password">Password</label>
+                <input type ="password" id="password" formControlName="password"
+                [ngClass]="{'invalid': errormessage.password || errormessage.passwordblock}"
+                placeholder="Password"
+                >
+                <span class="errormessage">{{errormessage.password}}</span>
+              </div>
+
+
+                <div class="input">
+                  <label for="confirm_password">Confirm Password</label>
+                  <input type ="password" id="confirm_password" formControlName="confirmpassword"
+                  [ngClass]="{'invalid': errormessage.passwordblock}"
+                  placeholder="Confirm Password"
+                  >
+                  <span class="errormessage">{{errormessage.passwordblock}}</span>
+                </div>
+
+
+            </div>
+
+            <div class="input">
+              <label for="location">Location</label>
+              <input type ="text" id="location" formControlName="location"
+              [ngClass]="{'invalid': errormessage.location}"
+              placeholder="Location"
+              >
+            <!--  <label for="location">Location</label>
+              <select id="location" formControlName="location"
+              [ngClass]="{'invalid': errormessage.location}">
+
+              <option *ngFor="let location of locations" value="{{location}}">{{location}}</option>
+
+            </select> -->
+              <span class="errormessage">{{errormessage.location}}</span>
+            </div>
+
+            <div class="uploadpicture" id="passportupload">
+              <div class="input">
+                <label for="pictureupload">Upload a passport photograph</label>
+
+                <input type ="file" id="picturepassport" name="avatar" formenctype="multipart/form-data" >
+
+                <div class="uploadpicture">
+                  <button onclick="uploading('passport');">upload picture</button>
+                  </div>
+                <div class="loading"id="loadingpassport">
+                  <div class="filling" id="fillingpassport"> </div>
+                </div>
+                <div style="display:none" id="uploadpassportmessage">
+                  </div>
+                  <div style="" id="uploadpassporterrormessage">
+                    </div>
+                </div>
+
+
+            </div>
+          <div class="uploadidcard" id="idcardupload">
+            <div class="input">
+              <label for="uploadidcard">Upload an I.D. card</label>
+              <input type ="file" id="pictureidcard" name="idcard" formenctype="multipart/form-data" >
+              <div class="uploadpicture">
+                <button onclick="uploading('idcard');">upload I.D.Card</button>
+                </div>
+              <div class="loading" id="loadingidcard">
+                <div class="filling" id="fillingidcard">
+                </div>
+              </div>
+              <div style="display:none;" id="uploadidcardmessage">
+                </div>
+                <div  id="uploadidcarderrormessage">
+                  </div>
+            </div>
+
+          </div>
+
+                <div class="input">
+                  <input type ="submit" (click)="save();" id="submit" [disabled]="!registerform.valid" value="Submit" id="submit">
+                   <span class="orregister">
+                      <a href="">
+                     or Login</a></span>
+                </div>
+
+
+
+              </form>
+
+
+              </div>
+
+
+          </div>
+      </div>

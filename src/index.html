@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="/">
+<meta charset="utf-8">
+<title>POS Location Sales Management</title>
+<link href="/assets/newsdesign.css" rel="stylesheet" type="text/css">
+<meta name="keyword" content="POS Location Sales Management" >
+<meta name="description" content=" POS Location Sales Management">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT Sans" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+
+
+
+
+<style>
+body{
+
+font-size: 100%;
+margin: 0;
+padding:0;
+outline: 0;
+
+}
+
+td, th{
+ border: 2px solid #bbb;
+ border-collapse: collapse;
+}
+
+td img{
+max-width: 50%;
+height: auto;
+
+}
+th, td{
+ padding: 10px;
+ text-align: center;
+}
+</style>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '344569333015691',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+</head>
+
+<body>
+
+
+<app-root></app-root>
+
+
+<script src="/assets/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+
+
+  // Your web app's Fi
+  // Initialize Fireb
+
+  var firebaseConfig = {
+      apiKey: "AIzaSyCZpydHm5BfjOtkXGLymUrdcadDDURE4U0",
+      authDomain: "pos-web-8e670.firebaseapp.com",
+      databaseURL: "https://pos-web-8e670.firebaseio.com",
+      projectId: "pos-web-8e670",
+      storageBucket: "pos-web-8e670.appspot.com",
+      messagingSenderId: "1038049291122",
+      appId: "1:1038049291122:web:dc5dc9781290ae4a8c4beb",
+      measurementId: "G-FBZ4L1Y5FR"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+displaysmall=()=>{
+  $('.togglesearch').toggleClass("togglesearch");
+  $('header').find('.fa-search').css("display", "none");
+  $('.togglesearch').toggleClass("togglesearch");
+}
+closesmall=()=>{
+  $('.close').toggleClass("togglesearch");
+    $('.flexdisplay').toggleClass("togglesearch");
+  $('header').find('.fa-search').css("display", "block");
+}
+expand =()=>{
+
+document.getElementById("dropdown-wrapper").style.display="block";
+ document.getElementById("main-news").className += " shift";
+}
+closedropdowntele=()=>{
+document.getElementById("dropdown-wrapper").style.display="none";
+document.getElementById("main-news").className ="main-news";
+}
+
+const uploading = (idornot)=>{
+  var storagi = firebase.storage();
+  var storageRef = storagi.ref();
+  let tofile = document.getElementById("picture"+idornot);
+  var file = tofile.files[0];
+
+// Create the file metadata
+var metadata = {
+  contentType: 'image/jpeg'
+};
+
+// Upload file and metadata to the object 'images/mountains.jpg'
+var uploadTask = storageRef.child('users/'+idornot+"/"+file.name).put(file, metadata);
+let uploadall = $('#'+idornot+'upload');
+uploadall.toggleClass('uploadblurr');
+let loading = document.getElementById("loading"+idornot);
+loading.style.display="block";
+// Listen for state changes, errors, and completion of the upload.
+uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+  function(snapshot) {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+
+    let filling = document.getElementById("filling"+idornot);
+    filling.style.width=progress+"%";
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function(error) {
+
+  // A full list of error codes is available at
+  // https://firebase.google.com/docs/storage/web/handle-errors
+  switch (error.code) {
+    case 'storage/unauthorized':
+      // User doesn't have permission to access the object
+      document.getElementById("upload"+idornot+"errormessage").innerHTML="<span style='color:red;'>unauthorized</span>"
+      break;
+
+    case 'storage/canceled':
+      // User canceled the upload
+      break;
+
+
+
+    case 'storage/unknown':
+      // Unknown error occurred, inspect error.serverResponse
+      document.getElementById("upload"+idornot+"errormessage").innerHTML="<span style='color:red;'>unknown error</span>"
+
+      break;
+  }
+}, function() {
+  // Upload completed successfully, now we can get the download URL
+  uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    console.log('File available at', downloadURL);
+    let loading = document.getElementById("loading"+idornot);
+    loading.style.display="none";
+    let uploadall = $('#'+idornot+'upload');
+    uploadall.toggleClass('uploadblurr');
+    document.getElementById("upload"+idornot+"errormessage").innerHTML="<span style='color:white;'>Upload successfull</span>"
+    document.getElementById("upload"+idornot+"message").innerHTML= downloadURL;
+
+  });
+});
+}
+changeplaceholder=()=>{
+  let determinant = $("#filter").val();
+ console.log(determinant);
+  switch(determinant){
+  case 'date': $("#searchword").attr('type','date');
+  break;
+  case 'keywords':  $("#searchword").attr('placeholder','Enter Your Search Terms');
+$("#searchword").attr('type','text');
+  break;
+  case 'country':  $("#searchword").attr('placeholder','Enter Your Country');
+$("#searchword").attr('type','text');
+  break;
+  default: ;
+  break;
+
+
+  }
+  }
+  $( document ).ready(function() {
+      console.log( "ready!" );
+
+
+})
+
+function sharedata(){
+
+	FB.ui({
+		method: 'share',
+ href: 'https://functions-web.web.app',}, function(response){});
+}
+const  closedropdown = ()=>{
+        //let dropdownclass = document.getElementsByClassName('dropdownwrapper')[0].className.includes('display');
+        //if(dropdownclass){dropdown = document.getElementsByClassName('dropdown')[0];
+    //    dropdown.className = dropdown.className.replace(/\bdisplay\b/g, "nodisplay");
+$('.dropdownwrapper').toggleClass('dropdowndisplay');
+    $('#adminwrapper').toggleClass("shift");
+
+      //}else{
+
+        //}
+        //$('.dropdownwrapper').toggleClass('display');
+      }
+      const expanddropdown = ()=>{
+        $('.dropdownwrapper').toggleClass('dropdowndisplay');
+        $('#adminwrapper').toggleClass("shift");
+      }
+      const expanding = (zero) =>{
+        if(zero == "zero"){zero =0}
+        if(zero == "one"){zero= 1}
+        console.log(0)
+        $('.sectioncontent').toggleClass('display');
+      }
+      a = $('.listsectioncontent')
+for(i=0; i<a.length; i++){
+  console.log(a[i]);
+      z= a[i].firstChild.data.toString();
+        console.log(z);
+      b= z.length;
+      console.log(b);
+      if(b>10){
+        c = z.substring(20, b);
+        console.log(c);
+        d = z.replace(c, "...");
+        console.log(d);
+        $('.listsectioncontent')[i].firstChild.data=d;
+
+      }}
+
+
+
+
+
+
+  if('serviceWorker' in navigator ){
+    window.addEventListener('load', async ()=>{
+      try{
+    registration = await navigator.serviceWorker.register('seuujr.js')
+
+    console.log(`service worker registered and service worker is ${registration.scope}`);
+}catch(e){
+  console.log(e);
+}})
+
+}else{console.log('no service worker')};
+
+function sharedata(){
+
+	FB.ui({
+		method: 'share',
+ href: 'https://functions-news.web.app',}, function(response){});
+}
+</script>
+
+
+
+</body>
+</html>
